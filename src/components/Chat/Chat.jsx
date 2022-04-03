@@ -16,11 +16,17 @@ const Chat = () => {
   const [users, setUsers] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-  const ENDPOINT = 'https://git.heroku.com/just-chat-vac.git';
+  const ENDPOINT = 'https://just-chat-vac.herokuapp.com/';
+  var connectionOptions =  {
+    "force new connection" : true,
+    "reconnectionAttempts": "Infinity", 
+    "timeout" : 10000,                  
+    "transports" : ['polling']
+};
   useEffect(()=>{
     const {name,room} = queryString.parse(location.search);
     
-    socket = io(ENDPOINT);
+    socket = io(ENDPOINT,connectionOptions);
     setName(name);
     setRoom(room);
     
@@ -43,10 +49,8 @@ const Chat = () => {
   },[messages]);
 
   const sendMessage = (event) =>{
-    console.log("sendmessage")
     event.preventDefault();
     if(message){
-      console.log("sendmessage1")
       socket.emit('sendMessage',message,()=>setMessage(''));
     }
   }
