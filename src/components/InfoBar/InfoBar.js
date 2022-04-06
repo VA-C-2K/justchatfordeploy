@@ -4,6 +4,8 @@ import onlineIcon from '../../icons/onlineIcon.png';
 import closeIcon from '../../icons/closeIcon.png';
 
 import './InfoBar.css';
+
+console.log("I am excuting infobar");
 const InfoBar = ({ room }) => (
     <div className='infoBar'>
         <div className="leftInnerContainer">

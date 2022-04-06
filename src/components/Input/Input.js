@@ -1,6 +1,6 @@
 import React from 'react';
 import './Input.css';
-
+console.log("input exce")
 const Input = ({message,setMessage,sendMessage}) => (
     <form  className="form">
         <input type="text" 
